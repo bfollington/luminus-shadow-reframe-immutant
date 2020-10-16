@@ -2,6 +2,7 @@
   (:require
    [mount.core :refer [defstate]]
    [struct.core :as st]
+   [clojure.tools.logging :as log]
    [taoensso.sente :as sente]
    [taoensso.sente.server-adapters.immutant
     :refer [get-sch-adapter]]))
@@ -33,10 +34,11 @@
   (if-let [errors (validate-message message)]
     {:errors errors}
     (do
-      (println message)
+      (log/info "MESSAGE" message)
       message)))
 
 (defn handle-message! [{:keys [id client-id ?data] :as message}]
+  (log/info (str "MESSAGE" id ?data))
   (when (= id :guestbook/add-message)
     (let [response (-> ?data
                        (assoc :timestamp (java.util.Date.))

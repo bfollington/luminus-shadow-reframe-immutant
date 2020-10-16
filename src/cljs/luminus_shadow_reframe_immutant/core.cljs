@@ -43,6 +43,10 @@
 
 (defn home-page []
   [:section.section>div.container>div.content
+   [:input.button.is-primary
+    {:type     :submit
+     :on-click #(ws/send-message! [:guestbook/add-message {:message "HELLLOOOO!!"}] 8000)
+     :value    "comment"}]
    (when-let [docs @(rf/subscribe [:docs])]
      [:div {:dangerouslySetInnerHTML {:__html (md->html docs)}}])])
 
