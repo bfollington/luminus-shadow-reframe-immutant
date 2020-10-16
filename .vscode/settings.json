@@ -1,0 +1,51 @@
+{
+        "calva.customREPLCommandSnippets": [
+        {
+            "name": "Start luminus-shadow-reframe-immutant Server",
+            "ns": "user",
+            "repl": "clj",
+            "snippet": "(start)"
+        },
+        {
+            "name": "Stop luminus-shadow-reframe-immutant Server",
+            "ns": "user",
+            "repl": "clj",
+            "snippet": "(stop)"
+        },
+        {
+            "name": "Restart luminus-shadow-reframe-immutant Server",
+            "ns": "user",
+            "repl": "clj",
+            "snippet": "(restart)"
+        }
+    ],
+    "calva.replConnectSequences": [
+                {
+            "name": "Server only - luminus-shadow-reframe-immutant",
+            "projectType": "Leiningen",
+            "afterCLJReplJackInCode": "(start)",
+            "cljsType": "none",
+            "menuSelections": {
+                "leinProfiles": [
+                    "dev"
+                ]
+            }
+        },
+        {
+            "name": "Server + Client – luminus-shadow-reframe-immutant",
+            "projectType": "lein-shadow",
+            "afterCLJReplJackInCode": "(start)",
+            "cljsType": "shadow-cljs",
+            "menuSelections": {
+                "leinProfiles": [
+                    "dev"
+                ],
+                "cljsLaunchBuilds": [
+                    "app",
+                    "test"
+                ],
+                "cljsDefaultBuild": "app"
+            }
+        }
+    ]
+}
